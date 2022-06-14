@@ -14,6 +14,7 @@ namespace sistema_lanchonete.Model.Dao
         const string senha = "root123456";
         const string porta = "3306";
         const string banco = "bd_sistema_lanchonete";
+        MySqlConnection con;
         public MySqlConnection AbrirConexao()
         {
 
@@ -21,13 +22,12 @@ namespace sistema_lanchonete.Model.Dao
             {
                 MySqlConnection con = new MySqlConnection($"Server={servidor};Database={banco};Uid={user};Pwd={senha};");
                 con.Open();
-                return con;
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return null;
             }
+            return con;
         }
 
         public void FecharConexao(MySqlConnection con)
