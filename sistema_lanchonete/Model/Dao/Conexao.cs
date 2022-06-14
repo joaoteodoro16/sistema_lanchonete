@@ -15,19 +15,17 @@ namespace sistema_lanchonete.Model.Dao
         const string porta = "3306";
         const string banco = "bd_sistema_lanchonete";
         MySqlConnection con;
-        public MySqlConnection AbrirConexao()
+        public void AbrirConexao()
         {
-
             try
             {
-                MySqlConnection con = new MySqlConnection($"Server={servidor};Database={banco};Uid={user};Pwd={senha};");
+                con = new MySqlConnection($"Server={servidor};Database={banco};Uid={user};Pwd={senha};");
                 con.Open();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            return con;
         }
 
         public void FecharConexao(MySqlConnection con)
@@ -41,9 +39,8 @@ namespace sistema_lanchonete.Model.Dao
         public List<string> Procurar(string comando)
         {
             MySqlDataReader leitor;
-            MySqlConnection con;
             MySqlCommand cmd;
-            con = AbrirConexao();
+            AbrirConexao();
             List<string> resp = new List<string>();
             try
             {
@@ -68,11 +65,10 @@ namespace sistema_lanchonete.Model.Dao
 
         public void ExecSql(string comando)
         {
-            MySqlConnection con;
             MySqlCommand cmd;
             try
             {
-                con = AbrirConexao();
+                AbrirConexao();
                 cmd = con.CreateCommand();
                 cmd.CommandText = comando;
                 cmd.ExecuteNonQuery();
@@ -83,6 +79,20 @@ namespace sistema_lanchonete.Model.Dao
                 MessageBox.Show(ex.Message);
             }
         }
+
+        #region "Integridade Banco de dados"
+        List<string> Tabelas = new List<string>();
+
+
+
+
+
+            
+
+
+
+        #endregion
+
 
 
     }
