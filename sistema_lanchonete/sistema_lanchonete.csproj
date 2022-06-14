@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <Folder Include="Controller\" />
-    <Folder Include="Model\Dao\" />
     <Folder Include="Util\" />
     <Folder Include="View\" />
   </ItemGroup>
