@@ -1,4 +1,6 @@
 using sistema_lanchonete.View;
+using sistema_lanchonete.Model.Dao;
+using System.Data;
 
 namespace sistema_lanchonete
 {

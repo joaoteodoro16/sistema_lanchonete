@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace sistema_lanchonete.Model.Dao
 {
@@ -80,20 +81,23 @@ namespace sistema_lanchonete.Model.Dao
             }
         }
 
-        #region "Integridade Banco de dados"
-        List<string> Tabelas = new List<string>();
-
-
-
-
-
-            
-
-
-
-        #endregion
-
-
-
+        public DataTable Consulta(string consulta)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                if(consulta == String.Empty)
+                {
+                    throw new Exception("Consulta invalida!");
+                }
+                AbrirConexao();
+                MySqlCommand cmd = new MySqlCommand(consulta, con);
+                dt.Load(cmd.ExecuteReader());
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
+            }
+            return dt;
+        }
     }
 }

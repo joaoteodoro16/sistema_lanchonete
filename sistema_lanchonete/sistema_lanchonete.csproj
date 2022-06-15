@@ -9,6 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Model\NovaPasta\**" />
+    <EmbeddedResource Remove="Model\NovaPasta\**" />
+    <None Remove="Model\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Model\Dao\Clientes.cs" />
+    <Compile Remove="Model\Dao\Endereco.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Controller\" />
     <Folder Include="Util\" />
   </ItemGroup>
